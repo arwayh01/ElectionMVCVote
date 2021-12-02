@@ -1,0 +1,54 @@
+﻿@model ElectionVote.Electeur
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Electeur</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomElecteur)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomElecteur)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrenomElecteur)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrenomElecteur)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CinElecteur)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CinElecteur)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreElecteur)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GenreElecteur)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CentreElection)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CentreElection.CentreElectionId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Condidatcandidat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Condidatcandidat.CandidatId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ElecteurId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

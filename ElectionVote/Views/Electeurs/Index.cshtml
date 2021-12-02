@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ElectionVote.Electeur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomElecteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrenomElecteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CinElecteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreElecteur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CentreElection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Condidatcandidat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomElecteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomElecteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CinElecteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenreElecteur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CentreElection.CentreElectionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Condidatcandidat.CandidatId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ElecteurId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ElecteurId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ElecteurId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

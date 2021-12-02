@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ElectionVote.CentreElection>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LibelleCentre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresseCentre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Administrateur)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibelleCentre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresseCentre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Administrateur.AdministrateurId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CentreElectionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CentreElectionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CentreElectionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
