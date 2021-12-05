@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,8 +22,12 @@ namespace ElectionVote.Controllers
         // GET: Votes
         public async Task<IActionResult> Index()
         {
-            var eLECTIONDBnewContext = _context.Vote.Include(v => v.Candidat).Include(v => v.Electeur);
+
+            // var eLECTIONDBnewContext = _context.Vote.Include(v => v.Candidat);
+            var eLECTIONDBnewContext = _context.Candidats;
             return View(await eLECTIONDBnewContext.ToListAsync());
+
+            
         }
 
         // GET: Votes/Details/5
@@ -47,19 +51,7 @@ namespace ElectionVote.Controllers
         }
 
         // GET: Votes/Create
-        public IActionResult Create()
-        {
-            ViewData["CandidatId"] = new SelectList(_context.Candidats, "CandidatId", "CandidatId");
-            ViewData["ElecteurId"] = new SelectList(_context.Electeurs, "ElecteurId", "ElecteurId");
-            return View();
-        }
-
-        // POST: Votes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VoteId,CandidatId,ElecteurId")] Vote vote)
+        public async Task<IActionResult> Create([Bind("ElecteurId")] Vote vote)
         {
             if (ModelState.IsValid)
             {
@@ -67,11 +59,13 @@ namespace ElectionVote.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CandidatId"] = new SelectList(_context.Candidats, "CandidatId", "CandidatId", vote.CandidatId);
-            ViewData["ElecteurId"] = new SelectList(_context.Electeurs, "ElecteurId", "ElecteurId", vote.ElecteurId);
-            return View(vote);
+            return View("index");
         }
 
+        // POST: Votes/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         // GET: Votes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

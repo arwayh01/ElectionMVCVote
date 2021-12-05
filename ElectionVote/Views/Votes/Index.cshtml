@@ -1,41 +1,48 @@
-﻿@model IEnumerable<ElectionVote.Models.Vote>
+@model IEnumerable<ElectionVote.Candidat>
 
 @{
     ViewData["Title"] = "Index";
+    Layout="~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Candidat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Electeur)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Candidat.CandidatId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Electeur.ElecteurId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.VoteId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.VoteId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.VoteId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+ <!--Anoucement Start-->
+        <section class="anoucement" >
+            <div class="container" >
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="anoucement_inner">
+                            <div class="block-title text-left">
+                                <h4>Bienvenue Madame , Monsieur</h4>
+                                <h2>Choisissez Votre Candidat!</h2>
+                                <p class="block-title-text">il suffit de cliquer sur le candidat. </p>
+                            </div>
+                           
+                            <div class="anoucement_inner_megaphone">
+                                <img src="assets/images/resources/megaphone-img.png" alt="">
+                            </div>
+                            <div class="row container">
+                                @foreach (var item in Model) {
+                                <div class="col-xl-4 col-lg-4">
+                                    <!--Mission_And_Vission Single-->
+                                    <div class="mission_and_vission_single wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                                        <div class="mission_and_vission_img">
+                                            <img src="assets/images/resources/mission_and_vission_img-1.jpg" alt="">
+                                        </div>
+                                        <div class="mission_and_vission_content">
+                                           
+                                            <h3><a asp-controller="VotesController" asp-action="Save" asp-route-id="1">@Html.DisplayFor(modelItem => item.NomCandidat) @Html.DisplayFor(modelItem => item.PrenomCandidat)</a></h3>
+                                          
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                             
+                              }
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Anoucement End-->
